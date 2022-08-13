@@ -9,7 +9,7 @@
 #ifndef PYTHON480_H_
 #define PYTHON480_H_
 
-#define DISABLE_PLL
+//#define DISABLE_PLL
 
 #include "SPI_BB_PYTHON480.h"
 
@@ -94,11 +94,11 @@ spi_BB_Write(197, 0x0104); // 0x0380) Num black lines spi_BB_Write(197, 0x030A);
 #ifdef DISABLE_PLL 
 	spi_BB_Write(199, 167); // Exposure/Frame rate config, spi_BB_Write(199, 0x0299);
 	spi_BB_Write(200, 3300); // Frame length, spi_BB_Write(200, 0x0350);
-	spi_BB_Write(201, 3300); // spi_BB_Write(201, 2900); // Exposure time spi_BB_Write(201, 0x01F4);
+	spi_BB_Write(201, 2900); // spi_BB_Write(201, 2900); // Exposure time spi_BB_Write(201, 0x01F4); Changed from 3300 by FS to reduce the exposure time for 2c operation
 #else
 	spi_BB_Write(199, 666); // Exposure/Frame rate config, spi_BB_Write(199, 0x0299);
-	spi_BB_Write(200, 3000); // Frame length, spi_BB_Write(200, 0x0350);
-	spi_BB_Write(201, 2900); // spi_BB_Write(201, 2900); // Exposure time spi_BB_Write(201, 0x01F4);
+	spi_BB_Write(200, 1667); // Frame length, spi_BB_Write(200, 0x0350);
+	spi_BB_Write(201, 1600); // spi_BB_Write(201, 2900); // Exposure time spi_BB_Write(201, 0x01F4);
 #endif
 spi_BB_Write(204, 0x00E4); 	// (gain 1x : 0x00E1 // gain 2x : 0x00E4 // gain 3.5x : 0x0024)
 spi_BB_Write(207, 0x0014);
